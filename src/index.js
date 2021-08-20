@@ -38,8 +38,17 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
-}
+let array = expr.match(/.{10}/g);
+let arrayOfDotsAndDashes = array.map(x => x.replace(/10/g, '.').replace(/11/g, '-').replace(/00/g, '').replace(/\*/g, ''));
+let arrayMorseDecoder = arrayOfDotsAndDashes.map(function(x) {
+  if (x === '') { 
+    return ' '; 
+  } else {
+    return x = MORSE_TABLE[x];
+  }
+});
+  return arrayMorseDecoder.join('');
+};
 
 module.exports = {
     decode
